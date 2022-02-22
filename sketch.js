@@ -47,4 +47,8 @@ function windowResized() {
 function mouseReleased(){
   
 }
-
+function touchStarted(){
+  console.log("jump")
+    player.jumpStart();
+}
+//

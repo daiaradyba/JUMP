@@ -32,7 +32,12 @@ function draw() {
   }
   if(!mouseIsPressed){
     
+    player.jumpEnd();
+    
   }
+ if(touches.length>0){
+   touchStarted();
+ }
   
  
   
@@ -47,14 +52,17 @@ function windowResized() {
 function mouseReleased(){
   
 }
-function touchStarted(){
-  console.log("jump")
-    player.jumpStart();
-    return false;
-}
+
 
 function touchEnded(){
-  console.log("jump")
+  console.log("endTouch")
+    player.jumpEnd();
+    touches= [];
+    return false
+}
+
+function touchStarted(){
+  console.log("saTouch")
     player.jumpStart();
     return false
 }

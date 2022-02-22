@@ -9,7 +9,7 @@ function setup() {
 }
 
 function draw() {
-  background(bck_start);  
+  //background(bck_start);  
 
 
  

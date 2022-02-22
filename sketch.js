@@ -31,10 +31,10 @@ function draw() {
     player.jumpStart();
   }
   if(!mouseIsPressed){
-    console.log("re")
-    player.jumpEnd();
+    
   }
-
+  
+ 
   
   player.gravity(2);
   drawSprites();
@@ -50,5 +50,11 @@ function mouseReleased(){
 function touchStarted(){
   console.log("jump")
     player.jumpStart();
+    return false;
 }
-//
+
+function touchEnded(){
+  console.log("jump")
+    player.jumpStart();
+    return false
+}

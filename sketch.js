@@ -83,7 +83,7 @@ function movCamera(){
   if(startfundo){
     bck.velocityY =10;
   }
-  if(bck.y>bck.height*0.30){
-    bck.y = windowHeight*0.68
+  if(bck.y>windowHeight*2){
+    bck.y = bck.height/8
   }
 }

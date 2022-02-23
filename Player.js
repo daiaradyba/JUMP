@@ -15,6 +15,9 @@ class Player{
     jumpStart(){
     this.body.changeAnimation("playerJumpAn");
     this.body.velocityY = -20
+    var index = touches.length -1 
+    console.log(touches)
+    this.body.x = touches[index].x
     }
     jumpEnd(){
         this.body.changeAnimation("playerAn");

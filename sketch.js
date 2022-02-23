@@ -5,6 +5,7 @@ var bck;
 var startfundo = false;
 var apoio, gApoio;
 var imgApoio;
+var leftInvi, rightInv
 
 function preload(){
   bck_start = loadImage("./assets/BCK.png");
@@ -31,6 +32,12 @@ function setup() {
   player = new Player();
   invisible = createSprite(windowWidth/2,player.y+150,windowWidth,5)
   invisible.visible = false;
+
+   leftInvi = createSprite(50,windowHeight/2,5,windowHeight*2)
+  leftInvi.visible = false;
+
+  rightInvi = createSprite(windowWidth-50,windowHeight/2,5,windowHeight*2)
+  rightInvi.visible = false;
 
   gApoio = new Group();
   
@@ -64,10 +71,12 @@ function draw() {
     if(player.body.velocityY>0){
       console.log(player.body.velocityY)
     player.body.collide(gApoio)
+    
    }
   }
   
- 
+ gApoio.bounceOff(leftInvi)
+ gApoio.bounceOff(rightInvi)
   drawSprites();
 }
 
@@ -115,8 +124,15 @@ function gerarApoio(){
     apoio.debug = true;
     apoio.addImage(imgApoio);
     apoio.scale = 0.3
+    var choice = Math.round(random(0,2));
+    if(choice ===1)
+    apoio.velocityX = -2;
+    if(choice ===2)
+    apoio.velocityX = 2;
+    if(choice===-0)
+    apoio.velocityX = 0;
     apoio.setCollider("rectangle",0,0,apoio.width,50);
-    player.depth = apoio.depth
+    player.depth = apoio.depth +1
     apoio.depth = player.depth -1
     
     gApoio.add(apoio);

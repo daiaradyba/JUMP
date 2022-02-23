@@ -18,7 +18,7 @@ function preload(){
   "./assets/Char_Pig_Flyght_006.png","./assets/Char_Pig_Flyght_007.png","./assets/Char_Pig_Flyght_008.png","./assets/Char_Pig_Flyght_009.png");
   playerJumpAn.frameDelay = 2
 
-  imgApoio = loadImage("/assets/Pad_1_1.png")
+  imgApoio = loadImage("./assets/Pad_1_1.png")
 
 } 
 
@@ -116,7 +116,8 @@ function gerarApoio(){
     apoio.addImage(imgApoio);
     apoio.scale = 0.8
     apoio.setCollider("rectangle",0,0,apoio.width,50);
-    apoio.depth = player.depth -2
+    player.depth = apoio.depth
+    apoio.depth = player.depth -1
     
     gApoio.add(apoio);
     

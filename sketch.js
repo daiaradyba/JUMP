@@ -114,7 +114,7 @@ function gerarApoio(){
     apoio.lifetime = 400;
     apoio.debug = true;
     apoio.addImage(imgApoio);
-    apoio.scale = 0.8
+    apoio.scale = 0.3
     apoio.setCollider("rectangle",0,0,apoio.width,50);
     player.depth = apoio.depth
     apoio.depth = player.depth -1

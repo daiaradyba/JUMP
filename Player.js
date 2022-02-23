@@ -23,6 +23,9 @@ class Player{
     if(this.body.x>touches[index].x){
         this.body.velocityX = -10
     }
+    if(this.body.x===touches[index].x){
+        this.body.velocityX = 0
+    }
    
     }
     jumpEnd(){

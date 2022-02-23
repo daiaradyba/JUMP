@@ -3,6 +3,8 @@ var player, playerAn, playerJumpAn;
 var invisible;
 var bck;
 var startfundo = false;
+var apoio, gApoio;
+var imgApoio;
 
 function preload(){
   bck_start = loadImage("./assets/BCK.png");
@@ -14,7 +16,9 @@ function preload(){
   playerJumpAn = loadAnimation("./assets/Char_Pig_Flyght_000.png","./assets/Char_Pig_Flyght_001.png","./assets/Char_Pig_Flyght_002.png",
   "./assets/Char_Pig_Flyght_003.png","./assets/Char_Pig_Flyght_004.png","./assets/Char_Pig_Flyght_005.png",
   "./assets/Char_Pig_Flyght_006.png","./assets/Char_Pig_Flyght_007.png","./assets/Char_Pig_Flyght_008.png","./assets/Char_Pig_Flyght_009.png");
-  playerJumpAn.frameDelay = 1
+  playerJumpAn.frameDelay = 2
+
+  imgApoio = loadImage("/assets/Pad_1_1.png")
 
 } 
 
@@ -28,6 +32,8 @@ function setup() {
   invisible = createSprite(windowWidth/2,player.y+150,windowWidth,5)
   invisible.visible = false;
 
+  gApoio = new Group();
+  
   
 }
 
@@ -50,7 +56,18 @@ function draw() {
  console.log("bck.y: "+bck.y+" player.y: "+ player.y)
  
   movCamera();
+ 
   player.gravity(2);
+  
+ 
+   if(gApoio.isTouching(player.body)){
+    if(player.body.velocityY>0){
+      console.log(player.body.velocityY)
+    player.body.collide(gApoio)
+   }
+  }
+  
+ 
   drawSprites();
 }
 
@@ -82,8 +99,28 @@ function movCamera(){
   }
   if(startfundo){
     bck.velocityY =10;
+    gerarApoio();
+
   }
-  if(bck.y>windowHeight*2){
+  if(bck.y>windowHeight*2.2){
     bck.y = bck.height/8
+  }
+}
+
+function gerarApoio(){
+  if(frameCount%60===0){
+    var apoio = createSprite(random(100,windowWidth-100), 0,350,50)
+    apoio.velocityY = 10;
+    apoio.lifetime = 400;
+    apoio.debug = true;
+    apoio.addImage(imgApoio);
+    apoio.scale = 0.8
+    apoio.setCollider("rectangle",0,0,apoio.width,50);
+    apoio.depth = player.depth -2
+    
+    gApoio.add(apoio);
+    
+
+    
   }
 }

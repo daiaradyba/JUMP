@@ -51,6 +51,7 @@ function draw() {
 console.log(gyro.x)
 if(gyro.y!=null){
   text(gyro.y,100,100)
+  createSprite(200,200,200,200)
 }
   if(mouseIsPressed){
     console.log("jump")

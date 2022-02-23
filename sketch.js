@@ -5,7 +5,8 @@ var bck;
 var startfundo = false;
 var apoio, gApoio;
 var imgApoio;
-var leftInvi, rightInv
+var leftInvi, rightInv;
+var gyro;
 
 function preload(){
   bck_start = loadImage("./assets/BCK.png");
@@ -41,12 +42,16 @@ function setup() {
 
   gApoio = new Group();
   
+  gyro = new Gyroscope();
   
 }
 
 function draw() {
   background(bck_start);  
-
+console.log(gyro.x)
+if(gyro.y!=null){
+  text(gyro.y,100,100)
+}
   if(mouseIsPressed){
     console.log("jump")
     player.jumpStart();

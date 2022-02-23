@@ -123,7 +123,7 @@ function movCamera(){
 }
 
 function gerarApoio(){
-  if(frameCount%60===0){
+  if(frameCount%30===0){
     var apoio = createSprite(random(100,windowWidth-100), 0,350,50)
     apoio.velocityY = 10;
     apoio.lifetime = 400;

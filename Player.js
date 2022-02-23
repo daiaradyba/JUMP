@@ -17,13 +17,13 @@ class Player{
     this.body.velocityY = -10
     var index = touches.length -1 
     console.log(touches)
-    if(this.body.x<touches[index].x){
+    if(this.body.x<touches[index].x-50){
         this.body.velocityX = 10
     }
-    if(this.body.x>touches[index].x){
+    if(this.body.x>touches[index].x+50){
         this.body.velocityX = -10
     }
-    if(this.body.x===touches[index].x){
+    if(this.body.x<touches[index].x+50&&this.body.x>touches[index].x-50){
         this.body.velocityX = 0
     }
    

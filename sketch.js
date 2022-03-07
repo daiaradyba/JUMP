@@ -1,5 +1,6 @@
 var bck_start;  
 var player, playerAn, playerJumpAn;
+var fartAn, seatkAn;
 var invisible;
 var bck;
 var startfundo = false;
@@ -7,6 +8,10 @@ var apoio, gApoio;
 var imgApoio;
 var leftInvi, rightInv;
 var gyro;
+var steakGroupStart,steakAn;
+
+var qntSteak = 5;
+
 
 function preload(){
   bck_start = loadImage("./assets/BCK.png");
@@ -20,8 +25,14 @@ function preload(){
   "./assets/Char_Pig_Flyght_006.png","./assets/Char_Pig_Flyght_007.png","./assets/Char_Pig_Flyght_008.png","./assets/Char_Pig_Flyght_009.png");
   playerJumpAn.frameDelay = 2
 
-  imgApoio = loadImage("./assets/Pad_1_1.png")
+  imgApoio = loadImage("./assets/Pad_1_1.png");
 
+  fartAn = loadAnimation("./assets/Fart/1.png","./assets/Fart/2.png","./assets/Fart/3.png","./assets/Fart/4.png");
+  fartAn.frameDelay = 2;
+
+  steakAn = loadImage("./assets/food/steak.png");
+
+  steakGroupStart = new Group();
 } 
 
 function setup() {
@@ -43,6 +54,8 @@ function setup() {
   gApoio = new Group();
   
   gyro = new Gyroscope();
+
+  createSteakStart();
   
 }
 
@@ -115,11 +128,15 @@ function movCamera(){
   if(startfundo){
     bck.velocityY =10;
     gerarApoio();
+    steakGroupStart.setVelocityYEach(+10)
 
   }
   if(bck.y>windowHeight*2.2){
     bck.y = bck.height/8
   }
+  //camera.on();
+  //camera.zoom = 5
+ // camera.y = player.body.y
 }
 
 function gerarApoio(){
@@ -146,4 +163,14 @@ function gerarApoio(){
 
     
   }
+}
+
+function createSteakStart(){
+  for(var j = 0; j<10;j++){
+  for(var i = 0; i<qntSteak;i++){
+    steak = new Steak(i*100+280,windowHeight - 400 - j*70,0,0);
+    steakGroupStart.add(steak.body);
+  }
+}
+
 }

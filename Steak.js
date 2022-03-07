@@ -4,6 +4,6 @@ class Steak{
         this.body.addAnimation("steakAn",steakAn);
         this.body.velocityX = velocityX;
         this.body.velocityY = velocityY;
-        this.body.scale = 0.12
+        this.body.scale = 0.12;
     }
 }

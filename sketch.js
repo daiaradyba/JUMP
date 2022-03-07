@@ -128,11 +128,11 @@ function movCamera(){
   if(startfundo){
     bck.velocityY =10;
     gerarApoio();
-    steakGroupStart.setVelocityYEach(+10)
+    steakGroupStart.setVelocityYEach(+10);
 
   }
   if(bck.y>windowHeight*2.2){
-    bck.y = bck.height/8
+    bck.y = bck.height/8;
   }
   //camera.on();
   //camera.zoom = 5
@@ -155,8 +155,8 @@ function gerarApoio(){
     if(choice===-0)
     apoio.velocityX = 0;
     apoio.setCollider("rectangle",0,0,apoio.width,50);
-    player.depth = apoio.depth +1
-    apoio.depth = player.depth -1
+    player.depth = apoio.depth +1;
+    apoio.depth = player.depth -1;
     
     gApoio.add(apoio);
     

@@ -4,14 +4,14 @@ class Player{
         this.body.addAnimation("playerAn",playerAn);
         this.body.addAnimation("playerJumpAn",playerJumpAn);
         this.body.scale = 0.11;
-        this.y = this.body.y
+        this.y = this.body.y;
         this.velocityY = 20;
         this.fart = createSprite(this.body.x,this.body.y+55);
         this.fart.visible = false;
-        this.fart.addAnimation("fartAn",fartAn)
-        this.fart.scale = 0.15
-        this.fart.depth = this.body.depth - 1
-        this.fart.rotation = -50
+        this.fart.addAnimation("fartAn",fartAn);
+        this.fart.scale = 0.15;
+        this.fart.depth = this.body.depth - 1;
+        this.fart.rotation = -50;
     }
     gravity(x){
         this.body.velocityY += x;
@@ -22,18 +22,18 @@ class Player{
     }
     jumpStart(){
     this.body.changeAnimation("playerJumpAn");
-    this.body.velocityY = -10
-    var index = touches.length -1 
+    this.body.velocityY = -10;
+    var index = touches.length -1;
     this.fart.visible = true;
     console.log(touches)
     if(this.body.x<touches[index].x-50){
-        this.body.velocityX = 10
+        this.body.velocityX = 10;
     }
     if(this.body.x>touches[index].x+50){
-        this.body.velocityX = -10
+        this.body.velocityX = -10;
     }
     if(this.body.x<touches[index].x+50&&this.body.x>touches[index].x-50){
-        this.body.velocityX = 0
+        this.body.velocityX = 0;
     }
    
     }

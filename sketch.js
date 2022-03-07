@@ -168,7 +168,7 @@ function gerarApoio(){
 function createSteakStart(){
   for(var j = 0; j<10;j++){
   for(var i = 0; i<qntSteak;i++){
-    steak = new Steak(i*100+280,windowHeight - 400 - j*70,0,0);
+    steak = new Steak(i*100+(windowWidth/4),windowHeight - 400 - j*70,0,0);
     steakGroupStart.add(steak.body);
   }
 }

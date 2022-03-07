@@ -10,7 +10,7 @@ var leftInvi, rightInv;
 var gyro;
 var steakGroupStart,steakAn;
 
-var qntSteak = 5;
+var qntSteak = 3;
 
 
 function preload(){

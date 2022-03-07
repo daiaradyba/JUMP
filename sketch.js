@@ -30,7 +30,7 @@ function preload(){
   fartAn = loadAnimation("./assets/Fart/1.png","./assets/Fart/2.png","./assets/Fart/3.png","./assets/Fart/4.png");
   fartAn.frameDelay = 2;
 
-  steakAn = loadImage("./assets/food/steak.png");
+  steakAn = loadImage("./assets/FOOD/steak.png");
 
   steakGroupStart = new Group();
 } 

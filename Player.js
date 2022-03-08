@@ -12,6 +12,7 @@ class Player{
         this.fart.scale = 0.15;
         this.fart.depth = this.body.depth - 1;
         this.fart.rotation = -50;
+        this.gas = 100;
     }
     gravity(x){
         this.body.velocityY += x;
@@ -21,6 +22,7 @@ class Player{
         this.fart.y  = this.body.y+55;
     }
     jumpStart(){
+        if(this.gas>0){
     this.body.changeAnimation("playerJumpAn");
     this.body.velocityY = -10;
     var index = touches.length -1;
@@ -35,11 +37,16 @@ class Player{
     if(this.body.x<touches[index].x+50&&this.body.x>touches[index].x-50){
         this.body.velocityX = 0;
     }
-   
+   this.gas-=1;
+    }
     }
     jumpEnd(){
         this.fart.visible = false;
         this.body.changeAnimation("playerAn");
-      
+        this.body.velocityX = 0
+    }
+    addGas(){
+        //console.log("GAAAS")
+        this.gas = this.gas+20;
     }
 }

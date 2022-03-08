@@ -8,7 +8,7 @@ var apoio, gApoio;
 var imgApoio;
 var leftInvi, rightInv;
 var gyro;
-var steakGroupStart,steakAn;
+var steakGroup,steakAn;
 
 var qntSteak = 3;
 
@@ -32,7 +32,7 @@ function preload(){
 
   steakAn = loadImage("./assets/FOOD/steak.png");
 
-  steakGroupStart = new Group();
+  steakGroup = new Group();
 } 
 
 function setup() {
@@ -61,9 +61,9 @@ function setup() {
 
 function draw() {
   background(bck_start);  
-console.log(gyro.x);
+  console.log(player.gas);
 
-player.body.bounceOff(steakGroupStart,removeSteak)
+player.body.bounceOff(steakGroup,removeSteak)
 if(gyro.y!=null){
   text(gyro.y,100,100)
   createSprite(200,200,200,200)
@@ -81,7 +81,7 @@ if(gyro.y!=null){
    touchStarted();
  }
   
- console.log("bck.y: "+bck.y+" player.y: "+ player.y)
+ //console.log("bck.y: "+bck.y+" player.y: "+ player.y)
  
   movCamera();
  
@@ -119,6 +119,7 @@ function touchEnded(){
 
 function touchStarted(){
   console.log("saTouch")
+  
     player.jumpStart();
     return false
 }
@@ -130,7 +131,7 @@ function movCamera(){
   if(startfundo){
     bck.velocityY =10;
     gerarApoio();
-    steakGroupStart.setVelocityYEach(+10);
+    steakGroup.setVelocityYEach(+10);
 
   }
   
@@ -173,13 +174,17 @@ function createSteakStart(){
   for(var j = 0; j<7;j++){
   for(var i = 0; i<qntSteak;i++){
     steak = new Steak(i*100+(windowWidth/4),windowHeight - 400 - j*70,0,0);
-    steakGroupStart.add(steak.body);
+    steakGroup.add(steak.body);
   }
 }
 
 }
-function removeSteak(player,steak){
-  steakGroupStart.remove(steak);
+function removeSteak(splayer,steak){
+  
+  player.addGas();
+  console.log("COLIDI")
+  steakGroup.remove(steak);
   steak.remove();
+  
 
 }

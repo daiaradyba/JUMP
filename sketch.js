@@ -61,7 +61,9 @@ function setup() {
 
 function draw() {
   background(bck_start);  
-console.log(gyro.x)
+console.log(gyro.x);
+
+player.body.bounceOff(steakGroupStart,removeSteak)
 if(gyro.y!=null){
   text(gyro.y,100,100)
   createSprite(200,200,200,200)
@@ -131,6 +133,7 @@ function movCamera(){
     steakGroupStart.setVelocityYEach(+10);
 
   }
+  
   if(bck.y>windowHeight*2.2){
     bck.y = bck.height/8;
   }
@@ -166,11 +169,17 @@ function gerarApoio(){
 }
 
 function createSteakStart(){
-  for(var j = 0; j<10;j++){
+  // j quantidade de linhas
+  for(var j = 0; j<7;j++){
   for(var i = 0; i<qntSteak;i++){
     steak = new Steak(i*100+(windowWidth/4),windowHeight - 400 - j*70,0,0);
     steakGroupStart.add(steak.body);
   }
 }
+
+}
+function removeSteak(player,steak){
+  steakGroupStart.remove(steak);
+  steak.remove();
 
 }

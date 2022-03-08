@@ -6,4 +6,10 @@ class Steak{
         this.body.velocityY = velocityY;
         this.body.scale = 0.12;
     }
+    colisao(){
+        if(this.body.isTouching(player)){
+            steakGroupStart.remove(this.body);
+            this.body.destroy();
+        }
+    }
 }

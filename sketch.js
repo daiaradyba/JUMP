@@ -131,7 +131,7 @@ function movCamera(){
   if(startfundo){
     bck.velocityY =5;
     gerarApoio();
-    steakGroup.setVelocityYEach(+);
+    steakGroup.setVelocityYEach(+5);
 
   }
   

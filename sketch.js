@@ -57,6 +57,7 @@ function setup() {
 
   createSteakStart();
   
+  player.body.debug = true;
 }
 
 function draw() {
@@ -91,7 +92,8 @@ if(gyro.y!=null){
    if(gApoio.isTouching(player.body)){
     if(player.body.velocityY>0){
       console.log(player.body.velocityY)
-    player.body.collide(gApoio)
+    player.body.collide(gApoio,player_apoio)
+
     
    }
   }
@@ -187,4 +189,7 @@ function removeSteak(splayer,steak){
   steak.remove();
   
 
+}
+function player_apoio(splayer,apoio){
+  splayer.velocityX = apoio.velocityX
 }

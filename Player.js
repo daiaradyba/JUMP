@@ -13,6 +13,9 @@ class Player{
         this.fart.depth = this.body.depth - 1;
         this.fart.rotation = -50;
         this.gas = 100;
+        this.body.debug = true;
+        this.largura = this.body.width;
+        this.body.setCollider("rectangle",0,0,this.body.width/2,this.body.weight,0)
     }
     gravity(x){
         this.body.velocityY += x;

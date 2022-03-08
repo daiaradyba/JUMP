@@ -131,7 +131,7 @@ function movCamera(){
   if(startfundo){
     bck.velocityY =5;
     gerarApoio();
-    steakGroup.setVelocityYEach(+5);
+    steakGroup.setVelocityYEach(+);
 
   }
   
@@ -144,7 +144,7 @@ function movCamera(){
 }
 
 function gerarApoio(){
-  if(frameCount%60===0){
+  if(frameCount%90===0){
     var apoio = createSprite(random(100,windowWidth-100), 0,350,50)
     apoio.velocityY = 5;
     apoio.lifetime = 400;

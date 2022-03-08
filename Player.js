@@ -15,7 +15,7 @@ class Player{
         this.gas = 100;
         this.body.debug = true;
         this.largura = this.body.width;
-        this.body.setCollider("rectangle",0,0,this.body.width/2,this.body.weight,0)
+        this.body.setCollider("rectangle",0,0,this.body.width/2,this.body.height,0)
     }
     gravity(x){
         this.body.velocityY += x;

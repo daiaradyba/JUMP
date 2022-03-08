@@ -9,6 +9,8 @@ var imgApoio;
 var leftInvi, rightInv;
 var gyro;
 var steakGroup,steakAn;
+var start = false;
+var limiteinf;
 
 var qntSteak = 3;
 
@@ -56,8 +58,10 @@ function setup() {
   gyro = new Gyroscope();
 
   createSteakStart();
+
   
-  player.body.debug = true;
+  
+ 
 }
 
 function draw() {
@@ -80,6 +84,9 @@ if(gyro.y!=null){
   }
  if(touches.length>0){
    touchStarted();
+ }
+ if(player.body.isTouching(invisible)&&start){
+   player.body.visible = false;
  }
   
  //console.log("bck.y: "+bck.y+" player.y: "+ player.y)
@@ -120,6 +127,7 @@ function touchEnded(){
 }
 
 function touchStarted(){
+  start = true;
   console.log("saTouch")
   
     player.jumpStart();

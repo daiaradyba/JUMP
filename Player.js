@@ -3,6 +3,7 @@ class Player{
         this.body = createSprite(windowWidth/2, windowHeight - windowHeight/10,50,50);
         this.body.addAnimation("playerAn",playerAn);
         this.body.addAnimation("playerJumpAn",playerJumpAn);
+        this.body.addAnimation("playerdead",playerdead)
         this.body.scale = 0.11;
         this.y = this.body.y;
         this.velocityY = 20;
@@ -30,16 +31,18 @@ class Player{
     this.body.velocityY = -10;
     var index = touches.length -1;
     this.fart.visible = true;
-    console.log(touches)
-    if(this.body.x<touches[index].x-50){
+ 
+    if(touches[index]!==undefined){
+    if(this.body.position.x<touches[index].x-50){
         this.body.velocityX = 10;
     }
-    if(this.body.x>touches[index].x+50){
+    if(this.body.position.x>touches[index].x+50){
         this.body.velocityX = -10;
     }
-    if(this.body.x<touches[index].x+50&&this.body.x>touches[index].x-50){
+    if(this.body.position.x<touches[index].x+50&&this.body.x>touches[index].x-50){
         this.body.velocityX = 0;
     }
+}
    this.gas-=1;
     }
     }

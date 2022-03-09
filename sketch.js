@@ -1,5 +1,5 @@
 var bck_start;  
-var player, playerAn, playerJumpAn;
+var player, playerAn, playerJumpAn,playerdead;
 var fartAn, seatkAn;
 var invisible;
 var bck;
@@ -11,6 +11,9 @@ var gyro;
 var steakGroup,steakAn;
 var start = false;
 var limiteinf;
+var gameState = 0;
+var startSprite
+var startBtn;
 
 var qntSteak = 3;
 
@@ -27,6 +30,10 @@ function preload(){
   "./assets/Char_Pig_Flyght_006.png","./assets/Char_Pig_Flyght_007.png","./assets/Char_Pig_Flyght_008.png","./assets/Char_Pig_Flyght_009.png");
   playerJumpAn.frameDelay = 2
 
+  playerdead = loadImage("/assets/Char_Pig_Death_009.png");
+  playerdead.frameDelay = 2
+
+
   imgApoio = loadImage("./assets/Pad_1_1.png");
 
   fartAn = loadAnimation("./assets/Fart/1.png","./assets/Fart/2.png","./assets/Fart/3.png","./assets/Fart/4.png");
@@ -35,6 +42,10 @@ function preload(){
   steakAn = loadImage("./assets/FOOD/steak.png");
 
   steakGroup = new Group();
+
+  startBtn = loadImage("./assets/GUI/PlayBtn.png");
+
+  
 } 
 
 function setup() {
@@ -57,6 +68,9 @@ function setup() {
   
   gyro = new Gyroscope();
 
+  startSprite = createSprite(windowWidth/2,windowHeight/2);
+  startSprite.addAnimation("start",startBtn)
+
   createSteakStart();
 
   
@@ -68,26 +82,48 @@ function draw() {
   background(bck_start);  
   console.log(player.gas);
 
-player.body.bounceOff(steakGroup,removeSteak)
-if(gyro.y!=null){
-  text(gyro.y,100,100)
-  createSprite(200,200,200,200)
-}
-  if(mouseIsPressed){
-    console.log("jump")
-    player.jumpStart();
-  }
-  if(!mouseIsPressed){
-    
+    if(gameState===0){
+      console.log("0")
+      // start.depth = player.body.depth+5
+      if(touches.length>0){
+        if(touches[touches.length-1].x<startSprite.x+startSprite.width/2&&touches[touches.length-1].x>startSprite.x-startSprite.width/2&&touches[touches.length-1].y<startSprite.y+startSprite.height/2&&touches[touches.length-1].y>startSprite.y-startSprite.height/2){
+          console.log("CLICOU");
+          startSprite.destroy();
+          touches = [];
+          gameState = 1;
+        }
+      }
+   }
+
+    if(gameState===1){
+      player.body.bounceOff(steakGroup,removeSteak)
+
+    if(mouseIsPressed){
+      console.log("jump")
+      player.jumpStart();
+    }
+
+    if(!mouseIsPressed)
     player.jumpEnd();
     
+  
+    if(touches.length>0)
+      touchStarted();
+
+    if(gApoio.isTouching(player.body)){
+      if(player.body.velocityY>0){
+        console.log(player.body.velocityY)
+        player.body.collide(gApoio,player_apoio)
+        }
+     }  
+ 
+    if(player.body.isTouching(invisible)&&start){
+    gameState=2;
   }
- if(touches.length>0){
-   touchStarted();
- }
- if(player.body.isTouching(invisible)&&start){
-   player.body.visible = false;
- }
+
+  if(gameState===2){
+    player.body.changeAnimation("playerdead")
+  }
   
  //console.log("bck.y: "+bck.y+" player.y: "+ player.y)
  
@@ -96,20 +132,16 @@ if(gyro.y!=null){
   player.gravity(2);
   
  
-   if(gApoio.isTouching(player.body)){
-    if(player.body.velocityY>0){
-      console.log(player.body.velocityY)
-    player.body.collide(gApoio,player_apoio)
+   
 
-    
-   }
   }
-  
- gApoio.bounceOff(leftInvi)
- gApoio.bounceOff(rightInvi)
+  //END GAME STATE 1
+
+  gApoio.bounceOff(leftInvi)
+  gApoio.bounceOff(rightInvi)
   drawSprites();
 }
-
+//END DRAW
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
@@ -120,17 +152,22 @@ function mouseReleased(){
 
 
 function touchEnded(){
+  if(gameState===1){
   console.log("endTouch")
     player.jumpEnd();
-    touches= [];
+    
+  }
+  touches= [];
     return false
 }
 
 function touchStarted(){
+  if(gameState===1){
   start = true;
   console.log("saTouch")
   
     player.jumpStart();
+  }
     return false
 }
 

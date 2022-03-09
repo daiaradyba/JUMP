@@ -30,7 +30,7 @@ function preload(){
   "./assets/Char_Pig_Flyght_006.png","./assets/Char_Pig_Flyght_007.png","./assets/Char_Pig_Flyght_008.png","./assets/Char_Pig_Flyght_009.png");
   playerJumpAn.frameDelay = 2
 
-  playerdead = loadImage("/assets/Char_Pig_Death_009.png");
+  playerdead = loadImage("./assets/Char_Pig_Death_009.png");
   playerdead.frameDelay = 2
 
 

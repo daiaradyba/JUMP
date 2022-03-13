@@ -21,6 +21,7 @@ var fonte;
 var coinStAn,coinSt;
 var coinCollect = 0;
 var qntSteak = 3;
+var nApoio = 0, sorteiaApoio
 
 
 function preload(){
@@ -86,6 +87,9 @@ function setup() {
   coinSt = createSprite((windowWidth*3/4-15),120);
   coinSt.addAnimation("coinSt",coinStAn);
   coinSt.scale = 0.5
+
+  sorteiaApoio=Math.round(random(1,3));
+  nApoio = 0;
  
  
 }
@@ -93,7 +97,7 @@ function setup() {
 function draw() {
   background(bck_start);  
   console.log(player.gas);
- 
+  
 
 
     if(gameState===0){
@@ -111,8 +115,8 @@ function draw() {
 
     if(gameState===1){
 
-    
-      player.body.bounceOff(steakGroup,removeSteak)
+    allthetime();
+     
 
     if(mouseIsPressed){
       console.log("jump")
@@ -139,6 +143,8 @@ function draw() {
 
   if(gameState===2){
     player.body.changeAnimation("playerdead")
+ 
+    bck.velocityY = 0  
   }
   
  //console.log("bck.y: "+bck.y+" player.y: "+ player.y)
@@ -147,9 +153,7 @@ function draw() {
  
   player.gravity(2);
   
- 
-   
-
+  
   }
   //END GAME STATE 1
 
@@ -168,7 +172,9 @@ push()
   textSize(30)
   text(coinCollect, windowWidth*3/4+10,coinSt.y+coinSt.width/4-2)
   pop();
+  console.log("sorteia: "+sorteiaApoio + " NAPOIO: "+ nApoio)
 }
+
 //END DRAW
 
 function windowResized() {
@@ -236,7 +242,18 @@ function gerarApoio(){
     apoio.setCollider("rectangle",0,0,apoio.width,50);
     player.depth = apoio.depth +1;
     apoio.depth = player.depth -1;
-    
+
+    if(nApoio===0){
+      sorteiaApoio = Math.round(random(1,3))
+     
+   
+    }
+
+    if(nApoio===sorteiaApoio){
+      createSteak();
+      nApoio = 0;
+    }
+    nApoio +=1;
     gApoio.add(apoio);
     
 
@@ -246,13 +263,26 @@ function gerarApoio(){
 
 function createSteakStart(){
   // j quantidade de linhas
-  for(var j = 0; j<7;j++){
+  for(var j = 0; j<5;j++){
   for(var i = 0; i<qntSteak;i++){
     steak = new Steak(i*80+player.x-100,player.y-150-j*50,0,0);
     steakGroup.add(steak.body);
   }
 }
+}
 
+function createSteak(){
+
+ 
+    steak = new Steak(random(windowWidth-windowWidth*3/4,windowWidth-windowWidth/4),-10,0,10);
+    steakGroup.add(steak.body);
+  
+
+}
+
+async function allthetime(){
+  
+  player.body.bounceOff(steakGroup,removeSteak)
 }
 function removeSteak(splayer,steak){
   
@@ -266,3 +296,5 @@ function removeSteak(splayer,steak){
 function player_apoio(splayer,apoio){
   splayer.velocityX = apoio.velocityX
 }
+
+

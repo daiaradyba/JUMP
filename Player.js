@@ -45,6 +45,7 @@ class Player{
     if(this.body.position.x<touches[index].x+50&&this.body.x>touches[index].x-50){
         this.body.velocityX = 0;
     }
+    
 }
    this.gas-=1;
     }
@@ -56,6 +57,6 @@ class Player{
     }
     addGas(){
         //console.log("GAAAS")
-        this.gas = this.gas+20;
+        this.gas = this.gas+80;
     }
 }

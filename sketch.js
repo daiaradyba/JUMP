@@ -77,13 +77,13 @@ function setup() {
 
   startSprite = createSprite(windowWidth/2,windowHeight/2);
   startSprite.addAnimation("start",startBtn)
-
+  startSprite.scale = 0.3
  
   createSteakStart();
 
-  coinSt = createSprite((windowWidth*2/4-15),160);
+  coinSt = createSprite((windowWidth*3/4-15),160);
   coinSt.addAnimation("coinSt",coinStAn);
-  coinSt.scale = 0.8
+  coinSt.scale = 0.5
  
  
 }
@@ -155,15 +155,15 @@ function draw() {
   gApoio.bounceOff(rightInvi)
   drawSprites();
 push()
-  textSize(30)
+  textSize(15)
   textFont(fonte)
   fill("red")
-  text("SCORE: " +pont,(windowWidth*2/4-30),100)
+  text("SCORE: " +pont,(windowWidth*3/4-30),100)
 
   fill("orange")
-  text("GAS: "  + player.gas, (windowWidth*2/4-30),130);
+  text("GAS: "  + player.gas, (windowWidth*3/4-30),130);
   fill("yellow")
-  text(coinCollect, windowWidth*2/4+15,coinSt.y+coinSt.width/4)
+  text(coinCollect, windowWidth*3/4+15,coinSt.y+coinSt.width/4)
   pop();
 }
 //END DRAW
@@ -245,7 +245,7 @@ function createSteakStart(){
   // j quantidade de linhas
   for(var j = 0; j<7;j++){
   for(var i = 0; i<qntSteak;i++){
-    steak = new Steak(i*100+(windowWidth/4),windowHeight - 400 - j*70,0,0);
+    steak = new Steak(i*70+(windowWidth/4),windowHeight - 400 - j*40,0,0);
     steakGroup.add(steak.body);
   }
 }

@@ -26,6 +26,8 @@ class Player{
         this.fart.y  = this.body.y+55;
     }
     jumpStart(){
+        if(frameCount%4===0)
+        pont = pont + 1;
         if(this.gas>0){
     this.body.changeAnimation("playerJumpAn");
     this.body.velocityY = -10;

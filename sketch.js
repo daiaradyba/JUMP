@@ -14,7 +14,12 @@ var limiteinf;
 var gameState = 0;
 var startSprite
 var startBtn;
-
+var pont = 0; 
+var pontTag;
+var texto;
+var fonte;
+var coinStAn,coinSt;
+var coinCollect = 0;
 var qntSteak = 3;
 
 
@@ -45,7 +50,9 @@ function preload(){
 
   startBtn = loadImage("./assets/GUI/PlayBtn.png");
 
-  
+  fonte = loadFont("assets/Font/LuckiestGuy-Regular.otf")
+
+  coinStAn = loadImage("./assets/COIN/1.png")
 } 
 
 function setup() {
@@ -71,16 +78,21 @@ function setup() {
   startSprite = createSprite(windowWidth/2,windowHeight/2);
   startSprite.addAnimation("start",startBtn)
 
+ 
   createSteakStart();
 
-  
-  
+  coinSt = createSprite((windowWidth*2/4-15),160);
+  coinSt.addAnimation("coinSt",coinStAn);
+  coinSt.scale = 0.8
+ 
  
 }
 
 function draw() {
   background(bck_start);  
   console.log(player.gas);
+ 
+
 
     if(gameState===0){
       console.log("0")
@@ -96,6 +108,8 @@ function draw() {
    }
 
     if(gameState===1){
+
+    
       player.body.bounceOff(steakGroup,removeSteak)
 
     if(mouseIsPressed){
@@ -117,7 +131,7 @@ function draw() {
         }
      }  
  
-    if(player.body.isTouching(invisible)&&start){
+    if(player.body.isTouching(invisible)&&pont>15){
     gameState=2;
   }
 
@@ -140,6 +154,17 @@ function draw() {
   gApoio.bounceOff(leftInvi)
   gApoio.bounceOff(rightInvi)
   drawSprites();
+push()
+  textSize(30)
+  textFont(fonte)
+  fill("red")
+  text("SCORE: " +pont,(windowWidth*2/4-30),100)
+
+  fill("orange")
+  text("GAS: "  + player.gas, (windowWidth*2/4-30),130);
+  fill("yellow")
+  text(coinCollect, windowWidth*2/4+15,coinSt.y+coinSt.width/4)
+  pop();
 }
 //END DRAW
 

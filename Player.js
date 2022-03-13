@@ -6,6 +6,7 @@ class Player{
         this.body.addAnimation("playerdead",playerdead)
         this.body.scale = 0.11;
         this.y = this.body.y;
+        this.x = this.body.x
         this.velocityY = 20;
         this.fart = createSprite(this.body.x,this.body.y+55);
         this.fart.visible = false;

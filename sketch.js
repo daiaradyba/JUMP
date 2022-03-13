@@ -75,13 +75,15 @@ function setup() {
   
   gyro = new Gyroscope();
 
-  startSprite = createSprite(windowWidth/2,windowHeight/2);
-  startSprite.addAnimation("start",startBtn)
-  startSprite.scale = 0.3
+  
  
   createSteakStart();
 
-  coinSt = createSprite((windowWidth*3/4-15),160);
+  startSprite = createSprite(windowWidth/2,windowHeight/2);
+  startSprite.addAnimation("start",startBtn)
+  startSprite.scale = 0.3
+
+  coinSt = createSprite((windowWidth*3/4-15),120);
   coinSt.addAnimation("coinSt",coinStAn);
   coinSt.scale = 0.5
  
@@ -158,12 +160,13 @@ push()
   textSize(15)
   textFont(fonte)
   fill("red")
-  text("SCORE: " +pont,(windowWidth*3/4-30),100)
+  text("SCORE: " +pont,(windowWidth*3/4-30),60)
 
   fill("orange")
-  text("GAS: "  + player.gas, (windowWidth*3/4-30),130);
+  text("GAS: "  + player.gas, (windowWidth*3/4-30),90);
   fill("yellow")
-  text(coinCollect, windowWidth*3/4+15,coinSt.y+coinSt.width/4)
+  textSize(30)
+  text(coinCollect, windowWidth*3/4+10,coinSt.y+coinSt.width/4-2)
   pop();
 }
 //END DRAW
@@ -245,7 +248,7 @@ function createSteakStart(){
   // j quantidade de linhas
   for(var j = 0; j<7;j++){
   for(var i = 0; i<qntSteak;i++){
-    steak = new Steak(i*70+(windowWidth/4),windowHeight - 400 - j*40,0,0);
+    steak = new Steak(i*45+player.x-100,player.y-150-j*40,0,0);
     steakGroup.add(steak.body);
   }
 }

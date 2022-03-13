@@ -248,7 +248,7 @@ function createSteakStart(){
   // j quantidade de linhas
   for(var j = 0; j<7;j++){
   for(var i = 0; i<qntSteak;i++){
-    steak = new Steak(i*45+player.x-100,player.y-150-j*40,0,0);
+    steak = new Steak(i*80+player.x-100,player.y-150-j*50,0,0);
     steakGroup.add(steak.body);
   }
 }

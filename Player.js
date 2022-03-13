@@ -31,7 +31,7 @@ class Player{
         pont = pont + 1;
         if(this.gas>0){
     this.body.changeAnimation("playerJumpAn");
-    this.body.velocityY = -10;
+    this.body.velocityY = -7;
     var index = touches.length -1;
     this.fart.visible = true;
  

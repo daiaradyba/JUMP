@@ -138,6 +138,12 @@ function draw() {
 
     allthetime();
      
+    if(pont%100===0&&pont!==0){
+      vel_Y = vel_Y + 0.1;
+      gApoio.setVelocityYEach(vel_Y);
+      steakGroup.setVelocityYEach(vel_Y);
+      coinGroup.setVelocityYEach(vel_Y)
+    }
 
     if(mouseIsPressed){
       console.log("jump")

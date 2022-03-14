@@ -288,7 +288,7 @@ function gerarApoio(){
     var apoio = createSprite(random(100,windowWidth-100), 0,350,50)
     apoio.velocityY = vel_Y;
     apoio.lifetime = 400;
-    apoio.debug = true;
+    apoio.debug = false;
     apoio.addImage(imgApoio);
     apoio.scale = 0.3
     var choice = Math.round(random(0,2));

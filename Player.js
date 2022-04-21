@@ -1,6 +1,6 @@
 class Player{
     constructor(){
-        this.body = createSprite(windowWidth/2, windowHeight - windowHeight/10,50,50);
+        this.body = createSprite(windowWidth/2, invisible.y-50,50,50);
         this.body.addAnimation("playerAn",playerAn);
         this.body.addAnimation("playerJumpAn",playerJumpAn);
         this.body.addAnimation("playerdead",playerdead)

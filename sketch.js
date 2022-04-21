@@ -68,9 +68,10 @@ function setup() {
   bck.addAnimation("bck_start",bck_start)
   bck.scale = windowWidth/bck.width
 
-  player = new Player();
-  invisible = createSprite(windowWidth/2,windowHeight-100,windowWidth,5)
+ 
+  invisible = createSprite(windowWidth/2,windowHeight-200,windowWidth,5)
   invisible.visible = false;
+  player = new Player();
 
    leftInvi = createSprite(50,windowHeight/2,5,windowHeight*2)
   leftInvi.visible = false;
@@ -192,7 +193,7 @@ function draw() {
     bck.velocityY = 0  
     start = false; 
     restartSprite.visible = true;
-    restartSprite.debug = true;
+    restartSprite.debug = false;
 
     if(touches.length>0){
 

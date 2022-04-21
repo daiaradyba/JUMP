@@ -69,7 +69,7 @@ function setup() {
   bck.scale = windowWidth/bck.width
 
   player = new Player();
-  invisible = createSprite(windowWidth/2,player.y+100,windowWidth,5)
+  invisible = createSprite(windowWidth/2,windowHeight-100,windowWidth,5)
   invisible.visible = false;
 
    leftInvi = createSprite(50,windowHeight/2,5,windowHeight*2)

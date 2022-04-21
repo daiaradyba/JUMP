@@ -224,7 +224,7 @@ push()
   textSize(15)
   textFont(fonte)
   fill("red")
-  text("SCORE: " +pont,(windowWidth*3/4-30),60)
+  text("SCORE2: " +pont,(windowWidth*3/4-30),60)
 
   fill("orange")
   text("GAS: "  + player.gas, (windowWidth*3/4-30),90);

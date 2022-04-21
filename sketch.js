@@ -225,7 +225,7 @@ push()
   textSize(15)
   textFont(fonte)
   fill("red")
-  text("SCORE4: " +pont,(windowWidth*3/4-30),60)
+  text("SCORE5: " +pont,(windowWidth*3/4-30),60)
 
   fill("orange")
   text("GAS: "  + player.gas, (windowWidth*3/4-30),90);
@@ -292,7 +292,7 @@ function gerarApoio(){
     apoio.lifetime = 400;
     apoio.debug = false;
     apoio.addImage(imgApoio);
-    apoio.scale = 0.3
+    apoio.scale = 0.26
     var choice = Math.round(random(0,2));
     if(choice ===1)
     apoio.velocityX = -2;

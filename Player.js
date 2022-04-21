@@ -4,7 +4,7 @@ class Player{
         this.body.addAnimation("playerAn",playerAn);
         this.body.addAnimation("playerJumpAn",playerJumpAn);
         this.body.addAnimation("playerdead",playerdead)
-        this.body.scale = 0.07;
+        this.body.scale = 0.085;
         this.y = this.body.y;
         this.x = this.body.x
         this.velocityY = 20;

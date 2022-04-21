@@ -4,14 +4,14 @@ class Player{
         this.body.addAnimation("playerAn",playerAn);
         this.body.addAnimation("playerJumpAn",playerJumpAn);
         this.body.addAnimation("playerdead",playerdead)
-        this.body.scale = 0.11;
+        this.body.scale = 0.07;
         this.y = this.body.y;
         this.x = this.body.x
         this.velocityY = 20;
-        this.fart = createSprite(this.body.x,this.body.y+55);
+        this.fart = createSprite(this.body.x,this.body.y+35);
         this.fart.visible = false;
         this.fart.addAnimation("fartAn",fartAn);
-        this.fart.scale = 0.15;
+        this.fart.scale = 0.10;
         this.fart.depth = this.body.depth - 1;
         this.fart.rotation = -50;
         this.gas = 100;
@@ -25,7 +25,7 @@ class Player{
         this.body.collide(invisible);
         this.y = this.body.y;
         this.fart.x = this.body.x;
-        this.fart.y  = this.body.y+55;
+        this.fart.y  = this.body.y+35;
     }
     jumpStart(){
         if(frameCount%4===0)

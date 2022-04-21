@@ -69,7 +69,7 @@ function setup() {
   bck.scale = windowWidth/bck.width
 
  
-  invisible = createSprite(windowWidth/2,windowHeight-200,windowWidth,5)
+  invisible = createSprite(windowWidth/2,windowHeight-50,windowWidth,5)
   invisible.visible = false;
   player = new Player();
 
@@ -225,7 +225,7 @@ push()
   textSize(15)
   textFont(fonte)
   fill("red")
-  text("SCORE3: " +pont,(windowWidth*3/4-30),60)
+  text("SCORE4: " +pont,(windowWidth*3/4-30),60)
 
   fill("orange")
   text("GAS: "  + player.gas, (windowWidth*3/4-30),90);

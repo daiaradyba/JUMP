@@ -91,7 +91,7 @@ function setup() {
 
   startSprite = createSprite(windowWidth/2,windowHeight/2);
   startSprite.addAnimation("start",startBtn)
-  startSprite.scale = 0.3
+  startSprite.scale = 10
 
   restartSprite = createSprite(windowWidth/2,windowHeight/2)
   restartSprite.addAnimation("restart",restartAn);

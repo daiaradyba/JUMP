@@ -124,7 +124,7 @@ function draw() {
       //console.log("0")
       // start.depth = player.body.depth+5
       
-      if(touches.length>0){
+      if(touches && touches.length > 0){
         if(touches[touches.length-1].x<startSprite.x+startSprite.width/2&&touches[touches.length-1].x>startSprite.x-startSprite.width/2&&touches[touches.length-1].y<startSprite.y+startSprite.height/2&&touches[touches.length-1].y>startSprite.y-startSprite.height/2){
           console.log("CLICOU");
           startSprite.destroy();
